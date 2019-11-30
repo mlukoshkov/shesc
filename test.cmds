@@ -1,0 +1,46 @@
+mycmd -o --option1 "value with space" --option2 'value with space'
+[mycmd][-o][--option1][value with space][--option2][value with space]
+mycmd -o $(echo OUCH!)
+[mycmd][-o][$(echo][OUCH!)]
+mycmd >>errors
+[mycmd][>>errors]
+mycmd | cat
+[mycmd][|][cat]
+mycmd; echo OUCH!
+[mycmd;][echo][OUCH!]
+mycmd -o $(echo OUCH!) >>errors
+[mycmd][-o][$(echo][OUCH!)][>>errors]
+for i; do echo $i; done
+[for][i;][do][echo][$i;][done]
+'e'ch"o" \d\o\n\e
+[echo][done]
+No ~ expansion should happen
+[No][~][expansion][should][happen]
+No * expansion should happen
+[No][*][expansion][should][happen]
+# is not a comment
+[#][is][not][a][comment]
+! is not a negation
+[!][is][not][a][negation]
+escaped "double \" quote"
+[escaped][double " quote]
+"fix missed $backslash"
+[fix missed $backslash]
+"backslash is already \$here"
+[backslash is already $here]
+unclosed 'single-quoted string
+[unclosed][single-quoted string]
+unclosed "double-quoted string
+[unclosed][double-quoted string]
+\$(echo OUCH!)
+[$(echo][OUCH!)]
+\{echo OUCH!}
+[{echo][OUCH!}]
+\"a\\\"b\" c
+["a\"b"][c]
+trailing backslash\
+[trailing][backslash]
+'trailing backslash in single quotes\
+[trailing backslash in single quotes\]
+"trailing backslash in double quotes\
+[trailing backslash in double quotes]
